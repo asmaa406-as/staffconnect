@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}{{ post.title }} — StaffConnect{% endblock %}
+{% block content %}
+<article class="post-detail">
+    <h1>{{ post.title }}</h1>
+    <p class="meta">By {{ post.author.username }} — {{ post.created_at|date:"M d, Y H:i" }}</p>
+    <div class="post-body">{{ post.body|linebreaks }}</div>
+
+    {% if request.user == post.author %}
+        <div class="actions">
+            <a href="{% url 'posts:update' post.slug %}">Edit</a>
+            <a href="{% url 'posts:delete' post.slug %}">Delete</a>
+        </div>
+    {% endif %}
+    <a href="{% url 'posts:home' %}">&larr; Back to announcements</a>
+</article>
+{% endblock %}

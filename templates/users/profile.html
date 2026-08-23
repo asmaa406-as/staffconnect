@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}My Profile — StaffConnect{% endblock %}
+{% block content %}
+<h1>My Profile</h1>
+<div class="profile-card">
+    <img src="{{ profile.avatar_url }}" alt="Avatar" class="avatar">
+    <h2>{{ profile.user.username }}</h2>
+    <p><strong>Department:</strong> {{ profile.department|default:"—" }}</p>
+    <p><strong>Bio:</strong> {{ profile.bio|default:"No bio yet." }}</p>
+    <a href="{% url 'users:edit_profile' %}" class="btn">Edit Profile</a>
+</div>
+{% endblock %}

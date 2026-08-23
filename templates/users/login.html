@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Login — StaffConnect{% endblock %}
+{% block content %}
+<h1>Login</h1>
+<form method="post" novalidate>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn">Login</button>
+</form>
+<p><a href="{% url 'users:password_reset' %}">Forgot your password?</a></p>
+<p>No account yet? <a href="{% url 'users:register' %}">Register</a></p>
+{% endblock %}
